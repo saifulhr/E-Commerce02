@@ -1,8 +1,9 @@
-import 'package:e_commerce02/utils/helpers/device_helpers.dart';
+import 'package:e_commerce02/core/helpers/device_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
 
-class OnboardingPage extends StatelessWidget {
+class OnboardingPage extends ConsumerWidget {
   const OnboardingPage({
     super.key,
     required this.animation,
@@ -14,7 +15,7 @@ class OnboardingPage extends StatelessWidget {
   final String subtitle;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: EdgeInsets.only(top: AllDeviceHelpers.getAppBarHeight()),
       child: Column(

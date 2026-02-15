@@ -1,17 +1,17 @@
 import 'package:e_commerce02/common/widgets/button/elevated_button.dart';
 import 'package:e_commerce02/features/authentications/screens/signup/verify_email.dart';
 import 'package:e_commerce02/features/authentications/screens/signup/widgets/privacy_policy_cheackbox.dart';
-import 'package:e_commerce02/utils/constants/all_sizes.dart';
-import 'package:e_commerce02/utils/constants/texts.dart';
+import 'package:e_commerce02/core/constants/all_sizes.dart';
+import 'package:e_commerce02/core/constants/texts.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends ConsumerWidget {
   const SignUpForm({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         Row(
@@ -61,7 +61,12 @@ class SignUpForm extends StatelessWidget {
         PrivacyPolicyCheckbox(),
         SizedBox(height: AllSizes.spaceBtwItems),
         DiffElevatedButton(
-          onPressed: () => Get.to(() => VerifyEmail()),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => VerifyEmail()),
+            );
+          },
           child: Text(OnTexts.createaccount),
         ),
       ],

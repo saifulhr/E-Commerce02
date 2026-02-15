@@ -1,12 +1,12 @@
-import 'package:e_commerce02/utils/constants/all_colors.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/appbar_theme.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/bottom_sheet_theme.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/checkbox_theme.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/chip_theme.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/elevatedbutton_theme.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/outlined_button_theme.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/text_feild_theme.dart';
-import 'package:e_commerce02/utils/themes/widgets_themes/text_themes.dart';
+import 'package:e_commerce02/core/constants/all_colors.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/appbar_theme.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/bottom_sheet_theme.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/checkbox_theme.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/chip_theme.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/elevatedbutton_theme.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/outlined_button_theme.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/text_feild_theme.dart';
+import 'package:e_commerce02/core/themes/widgets_themes/text_themes.dart';
 import 'package:flutter/material.dart';
 
 class AppallTheme {

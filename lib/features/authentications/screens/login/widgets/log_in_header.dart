@@ -1,12 +1,13 @@
-import 'package:e_commerce02/utils/constants/all_sizes.dart';
-import 'package:e_commerce02/utils/constants/texts.dart';
+import 'package:e_commerce02/core/constants/all_sizes.dart';
+import 'package:e_commerce02/core/constants/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LogInHeader extends StatelessWidget {
+class LogInHeader extends ConsumerWidget {
   const LogInHeader({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

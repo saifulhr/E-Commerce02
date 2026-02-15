@@ -1,4 +1,4 @@
-import 'package:e_commerce02/utils/constants/all_colors.dart';
+import 'package:e_commerce02/core/constants/all_colors.dart';
 import 'package:flutter/material.dart';
 
 class Allchiptheme {

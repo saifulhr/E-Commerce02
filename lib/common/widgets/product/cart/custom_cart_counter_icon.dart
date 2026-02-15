@@ -1,13 +1,14 @@
-import 'package:e_commerce02/utils/constants/all_colors.dart';
-import 'package:e_commerce02/utils/helpers/helpers_function.dart';
+import 'package:e_commerce02/core/constants/all_colors.dart';
+import 'package:e_commerce02/core/helpers/helpers_function.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 
-class CustomCartCounterIcon extends StatelessWidget {
+class CustomCartCounterIcon extends ConsumerWidget {
   const CustomCartCounterIcon({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     bool dark = HelpersFunction.isDarkMode(context);
     return Stack(
       children: [

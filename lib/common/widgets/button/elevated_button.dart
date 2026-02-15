@@ -1,7 +1,8 @@
-import 'package:e_commerce02/utils/helpers/device_helpers.dart';
+import 'package:e_commerce02/core/helpers/device_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DiffElevatedButton extends StatelessWidget {
+class DiffElevatedButton extends ConsumerWidget {
   const DiffElevatedButton({
     super.key,
     required this.onPressed,
@@ -12,7 +13,7 @@ class DiffElevatedButton extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       width: AllDeviceHelpers.getScreenWidth(context),
       child: ElevatedButton(onPressed: onPressed, child: child),

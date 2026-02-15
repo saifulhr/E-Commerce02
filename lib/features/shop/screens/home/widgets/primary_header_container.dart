@@ -1,15 +1,16 @@
 import 'package:e_commerce02/common/widgets/custom_shapes/circular_container.dart';
-import 'package:e_commerce02/common/widgets/custom_shapes/clipper/custom_rounded_edges_screens.dart';
-import 'package:e_commerce02/utils/constants/all_colors.dart';
-import 'package:e_commerce02/utils/constants/all_sizes.dart';
+import 'package:e_commerce02/common/widgets/custom_shapes/clipper/roundededges_screens.dart';
+import 'package:e_commerce02/core/constants/all_colors.dart';
+import 'package:e_commerce02/core/constants/all_sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PrimaryHeaderContainer extends StatelessWidget {
+class PrimaryHeaderContainer extends ConsumerWidget {
   const PrimaryHeaderContainer({super.key, required this.child});
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return CustomRoundedEdgesScreens(
       child: Container(
         color: AllColors.primary,

@@ -1,29 +1,37 @@
-import 'package:e_commerce02/features/authentications/controllers/onboarding/onboarding_controller.dart';
-import 'package:e_commerce02/features/authentications/screens/onboarding/widgets/onboarding_dot_navigation.dart';
-import 'package:e_commerce02/features/authentications/screens/onboarding/widgets/onboarding_next_button.dart';
-import 'package:e_commerce02/features/authentications/screens/onboarding/widgets/onboarding_page.dart';
-import 'package:e_commerce02/features/authentications/screens/onboarding/widgets/onboarding_skip.dart';
-import 'package:e_commerce02/utils/constants/all_sizes.dart';
-import 'package:e_commerce02/utils/constants/images.dart';
-import 'package:e_commerce02/utils/constants/texts.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:e_commerce02/features/authentications/screens/login/log_in_screen.dart';
+import 'package:e_commerce02/core/constants/all_sizes.dart';
+import 'package:e_commerce02/core/constants/images.dart';
+import 'package:e_commerce02/core/constants/texts.dart';
+import '../../../../common/widgets/button/elevated_button.dart';
+import '../../../../core/helpers/device_helpers.dart';
+import 'provider/provider.dart';
+import 'widgets/onboarding_page.dart';
 
-class OnboardingScreens extends StatelessWidget {
-  const OnboardingScreens({super.key});
+class OnboardingScreen extends ConsumerWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(OnboardingController());
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(onboardingControllerProvider);
+    final controller = ref.read(onboardingControllerProvider.notifier);
+
+    void goToLogin() {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => LogInScreen()));
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AllSizes.defaultSpace),
         child: Stack(
           children: [
-            // scrollable page
+            // PageView
             PageView(
-              controller: controller.pagecontroller,
-              onPageChanged: controller.updatePageIndicator,
+              controller: state.pageController,
+              onPageChanged: controller.updatePage,
               children: [
                 OnboardingPage(
                   animation: Onimages.Onboarding1Animation,
@@ -43,14 +51,40 @@ class OnboardingScreens extends StatelessWidget {
               ],
             ),
 
-            // indicator
-            OnboardingDotnavigation(),
+            // Dot indicator
+            Positioned(
+              bottom: AllDeviceHelpers.getBottomNavigationBarHeight() * 6,
+              left: AllDeviceHelpers.getScreenWidth(context) / 3,
+              right: AllDeviceHelpers.getScreenWidth(context) / 3,
+              child: SmoothPageIndicator(
+                controller: state.pageController,
+                count: 3,
+                effect: ExpandingDotsEffect(dotHeight: 6.0),
+                onDotClicked: controller.dotNavigationClick,
+              ),
+            ),
 
-            // bottom button
-            OnboardingNextButton(),
+            // Next button
+            Positioned(
+              right: 0,
+              left: 0,
+              bottom: AllSizes.spaceBtwItems,
+              child: DiffElevatedButton(
+                onPressed: () => controller.nextPage(goToLogin),
+                child: Text(state.currentIndex == 2 ? 'Get Started' : 'Next'),
+              ),
+            ),
 
-            // skip button
-            OnboardingSkip(),
+            // Skip button
+            if (state.currentIndex != 2)
+              Positioned(
+                right: 0,
+                top: AllDeviceHelpers.getAppBarHeight(),
+                child: TextButton(
+                  onPressed: controller.skipPage,
+                  child: Text('Skip'),
+                ),
+              ),
           ],
         ),
       ),

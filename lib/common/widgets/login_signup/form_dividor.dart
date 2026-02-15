@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FormDivider extends StatelessWidget {
+class FormDivider extends ConsumerWidget {
   final String title;
 
   const FormDivider({
@@ -9,7 +10,7 @@ class FormDivider extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
         const Expanded(

@@ -1,12 +1,12 @@
-import 'package:e_commerce02/utils/constants/all_colors.dart';
-import 'package:e_commerce02/utils/constants/all_sizes.dart';
-import 'package:e_commerce02/utils/helpers/device_helpers.dart';
-import 'package:e_commerce02/utils/helpers/helpers_function.dart';
+import 'package:e_commerce02/core/constants/all_colors.dart';
+import 'package:e_commerce02/core/constants/all_sizes.dart';
+import 'package:e_commerce02/core/helpers/device_helpers.dart';
+import 'package:e_commerce02/core/helpers/helpers_function.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     this.title,
@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? leadingOnPressed;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     bool isDarkMode = HelpersFunction.isDarkMode(context);
     return Padding(
       padding: EdgeInsetsGeometry.symmetric(horizontal: AllSizes.md),
@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         //Leading Widget
         leading: showBackArrow
             ? IconButton(
-                onPressed: () => Get.back(),
+                onPressed: () => Navigator.pop(context),
                 icon: Icon(
                   Iconsax.arrow_left,
                   color: isDarkMode ? AllColors.white : AllColors.dark,

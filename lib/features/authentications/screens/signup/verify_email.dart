@@ -1,25 +1,28 @@
 import 'package:e_commerce02/common/widgets/button/elevated_button.dart';
 import 'package:e_commerce02/common/widgets/screens/success_screen.dart';
 import 'package:e_commerce02/features/authentications/screens/login/log_in_screen.dart';
-import 'package:e_commerce02/utils/constants/all_sizes.dart';
-import 'package:e_commerce02/utils/constants/images.dart';
-import 'package:e_commerce02/utils/constants/texts.dart';
-import 'package:e_commerce02/utils/helpers/device_helpers.dart';
+import 'package:e_commerce02/core/constants/all_sizes.dart';
+import 'package:e_commerce02/core/constants/images.dart';
+import 'package:e_commerce02/core/constants/texts.dart';
+import 'package:e_commerce02/core/helpers/device_helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class VerifyEmail extends StatelessWidget {
+class VerifyEmail extends ConsumerWidget {
   const VerifyEmail({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.offAll(() => LogInScreen()),
+            onPressed: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => LogInScreen()),
+            ),
             icon: Icon(CupertinoIcons.clear),
           ),
         ],
@@ -56,14 +59,19 @@ class VerifyEmail extends StatelessWidget {
               SizedBox(height: AllSizes.spaceBtwSections),
               // Continue
               DiffElevatedButton(
-                onPressed: () => Get.to(
-                  () => SuccessScreen(
-                    title: OnTexts.accountCreateSuccessfullyTitle,
-                    SUbtitle: OnTexts.accountCreateSuccessfullySubTitle,
-                    image: Onimages.accountCreate,
-                    ontap: () {},
-                  ),
-                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SuccessScreen(
+                        title: OnTexts.accountCreateSuccessfullyTitle,
+                        SUbtitle: OnTexts.accountCreateSuccessfullySubTitle,
+                        image: Onimages.accountCreate,
+                        ontap: () {},
+                      ),
+                    ),
+                  );
+                },
                 child: Text(OnTexts.ButtonContinue),
               ),
 

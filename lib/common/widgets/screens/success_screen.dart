@@ -1,17 +1,18 @@
 import 'package:e_commerce02/common/widgets/button/elevated_button.dart';
-import 'package:e_commerce02/utils/constants/all_sizes.dart';
-import 'package:e_commerce02/utils/constants/texts.dart';
-import 'package:e_commerce02/utils/helpers/device_helpers.dart';
+import 'package:e_commerce02/core/constants/all_sizes.dart';
+import 'package:e_commerce02/core/constants/texts.dart';
+import 'package:e_commerce02/core/helpers/device_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SuccessScreen extends StatelessWidget {
+class SuccessScreen extends ConsumerWidget {
   const SuccessScreen({super.key, required this.title, required this.SUbtitle, required this.image, required this.ontap});
 
   final String title, SUbtitle,image;
   final VoidCallback ontap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(automaticallyImplyLeading: false),
       body: SingleChildScrollView(

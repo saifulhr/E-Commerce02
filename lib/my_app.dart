@@ -1,18 +1,21 @@
-import 'package:e_commerce02/features/authentications/screens/onboarding/onboarding_screens.dart';
-import 'package:e_commerce02/utils/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:e_commerce02/core/themes/app_theme.dart';
 
-class MyApp extends StatelessWidget {
+import 'routes/app_routes.dart';
+
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: AppallTheme.lightTheme,
       darkTheme: AppallTheme.darkTheme,
-      home: OnboardingScreens(),
+      initialRoute: AppRoutes.onbordingscreen,
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }
